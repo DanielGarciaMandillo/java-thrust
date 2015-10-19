@@ -1,8 +1,8 @@
 package org.thrust_java;
 
 import org.junit.Test;
-import org.thrust_java.Actions.Call;
-import org.thrust_java.Actions.Create;
+import org.thrust_java.Actions.CALL;
+import org.thrust_java.Actions.CREATE;
 import org.utils.Json;
 
 import junit.framework.Assert;
@@ -12,7 +12,7 @@ public class ActionsTest {
 	@Test
 	public void actionCreateTest() {
 
-		Create create = new Actions().getCreate();
+		CREATE create = new Actions().getCreate();
 
 		Json jsonResponse = Actions.actionToJson(create);
 
@@ -23,7 +23,7 @@ public class ActionsTest {
 	@Test
 	public void actionCallTest() {
 
-		Call call = new Actions().getCall();
+		CALL call = new Actions().getCall();
 
 		Json jsonResponse = Actions.actionToJson(call);
 

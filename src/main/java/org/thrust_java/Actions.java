@@ -3,7 +3,7 @@ package org.thrust_java;
 import org.utils.Json;
 
 /**
- * Actions
+ * Actions TERMINADOS
  *
  */
 public class Actions {
@@ -16,22 +16,22 @@ public class Actions {
 		public abstract Json toJson();
 	}
 	
-	public Create getCreate(){
-		return new Create();
+	public CREATE getCreate(){
+		return new CREATE();
 	}
 	
-	public Call getCall(){
-		return new Call();
+	public CALL getCall(){
+		return new CALL();
 	}
 
-	class Create extends Action {
+	class CREATE extends Action {
 		@Override
 		public Json toJson() {
 			return new Json("_action", "create");
 		}
 	}
 
-	class Call extends Action {
+	class CALL extends Action {
 		@Override
 		public Json toJson() {
 			return new Json("_action", "call");

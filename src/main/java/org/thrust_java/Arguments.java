@@ -3,7 +3,7 @@ package org.thrust_java;
 import org.utils.Json;
 
 /**
- * Arguments
+ * Arguments : TERMINADOS
  *
  */
 public class Arguments {
