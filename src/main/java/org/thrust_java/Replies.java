@@ -2,7 +2,7 @@ package org.thrust_java;
 
 
 /**
- * Actions
+ * Replies : NO TERMINADO queda por hacer
  *
  */
 public class Replies {

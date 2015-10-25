@@ -1,18 +1,18 @@
 package org.thrust_java;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.thrust_java.Replies.EventFields;
 import org.utils.IntegerEvent;
 
 /**
- * Events : TERIMNADO, FALTA ALGUNAS COSAS COMENTADAS
+ * Events TERMINADO
  *
  */
 public class Events {
 	
-	//TODO EN el proyecto Scala la clave es un dupla (int,event) y como
-	//valor tiene Function1[EventFields, Unit]
 	private ConcurrentHashMap<IntegerEvent,EventFields> callbackMap;
 	
 	public Events(){
@@ -23,16 +23,24 @@ public class Events {
 		callbackMap.putIfAbsent(new IntegerEvent(id, e), ef);
 	}
 	
-	//TODO EL SETCALLBACK RECIBE EN REALIDAD: Integer id, Event e, Function1[EventFields, Unit] ¿??¿?¿
 	public void setCallback(Integer id, Event e, EventFields ef){
 		callbackMap.replace(new IntegerEvent(id, e), ef);
 	}
-	
-//	TODO BORRAR PARA EL ID TODAS LAS ENTRADAS (recorriendo todos los eventos))
-//	¿COMO HACER ESTO? AL SER NUEVO OBJETO NUNCA BORRA LA CLAVE
-//	public void removeForWindow(Integer id){
-//		callbackMap.remove(new IntegerEvent(id, Blurred);
-//	}
+
+	public void removeForWindow(Integer id){
+		Set<IntegerEvent> list = new HashSet<>();
+		Set<IntegerEvent> keys = callbackMap.keySet();
+		
+		for(IntegerEvent key : keys){
+			if(id==key.getInteger()){
+				list.add(key);
+			}
+		}
+		
+		for(IntegerEvent element : list){
+			callbackMap.remove(element);
+		}
+	}
 
 	public ConcurrentHashMap<IntegerEvent,EventFields> getCallbackMap() {
 		return callbackMap;

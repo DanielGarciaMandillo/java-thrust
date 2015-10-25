@@ -3,7 +3,7 @@ package org.thrust_java;
 import org.utils.Json;
 
 /**
- * Actions : TERMINADOS
+ * Methods : TERMINADOS
  *
  */
 public class Methods {
