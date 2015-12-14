@@ -4,9 +4,7 @@
 
 # How to use
 
-Download latest Thrust binary release [here].
-
-Point to the thrustshell binary in application.conf
+Download latest Thrust binary release [here] and point to the thrustshell binary in application.conf
 ```
 thrust_path="/Applications/ThrustShell.app/Contents/MacOS/ThrustShell"
 ```
