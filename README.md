@@ -15,7 +15,7 @@ thrust_path="/Applications/ThrustShell.app/Contents/MacOS/ThrustShell"
 
 Run file Main.java in test folder
 
-```sh
+```java
 public class Main {
 
 	public static void main(String[] args) {
