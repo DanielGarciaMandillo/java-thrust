@@ -1,10 +1,10 @@
 # java-thrust
 
-Thrust bindings for Java
+[Thrust] bindings for Java
 
 # How to use
 
-Download latest Thrust binary release here.
+Download latest Thrust binary release [here].
 
 Point to the thrustshell binary in application.conf
 ```
