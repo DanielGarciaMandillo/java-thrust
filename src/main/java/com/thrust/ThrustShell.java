@@ -25,17 +25,17 @@ public final class ThrustShell {
 	private final Process process = initProcess();
 	public final BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
 	public final OutputStream out = process.getOutputStream();
-	
+
 	private ThrustShell() {
 		startThread();
 	}
-	
+
 	public static ThrustShell getShell() {
 		if (shell == null)
 			shell = new ThrustShell();
 		return shell;
 	}
-	
+
 	private Process initProcess() {
 		try {
 			Config config = ConfigFactory.load();
@@ -46,7 +46,7 @@ public final class ThrustShell {
 			throw new RuntimeException(ex);
 		}
 	}
-	
+
 	private void startThread() {
 		new Thread(new Runnable() {
 			@Override
@@ -77,12 +77,12 @@ public final class ThrustShell {
 			}
 		}).start();
 	}
-	
+
 	public void handleEvent(String event) {
 		EventReply reply = new Gson().fromJson(event, EventReply.class);
 		Events.callback(reply.getTarget(), Event.fromString(reply.getType()), reply.getEf());
 	}
-	
+
 	public void handleReply(Reply reply) {
 		Result res = reply.getResult();
 		List<Optional<Boolean>> l = Arrays.asList(res.getClosed(), res.getDevToolsOpened(), res.getFullScreen(),
@@ -90,19 +90,16 @@ public final class ThrustShell {
 		System.out.println(res);
 		final CompletableFuture promise = MessageBox.getPromise(reply.getId());
 		res.getTarget().ifPresent(x -> promise.complete(x));
-		l.stream()
-				.filter(Optional::isPresent)
-				.findFirst()
-				.ifPresent(h -> promise.complete(h.get()));
+		l.stream().filter(Optional::isPresent).findFirst().ifPresent(h -> promise.complete(h.get()));
 		res.getPosition().ifPresent(p -> promise.complete(p));
 		res.getSize().ifPresent(s -> promise.complete(s));
 		System.out.println("-----------Exitinig handleReply -----------");
 	}
-	
+
 	public void handleRemoteMethods(Reply reply) {
 		Optional<RemoteMethod> method = reply.getMethod();
 	}
-	
+
 	public void cleanup() {
 		process.destroy();
 	}

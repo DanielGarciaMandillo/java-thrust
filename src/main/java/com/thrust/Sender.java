@@ -13,10 +13,10 @@ import com.thrust.arguments.Argument;
 public class Sender {
 	static final String boundary = "\n--(Foo)++__THRUST_SHELL_BOUNDARY__++(Bar)--\n";
 	static final AtomicInteger nextId = new AtomicInteger(1);
-	
+
 	private Sender() {
 	}
-	
+
 	static class Command {
 		private int _id;
 		private String _action;
@@ -24,7 +24,7 @@ public class Sender {
 		private String _type;
 		private Integer _target;
 		private Map _args = new HashMap();
-		
+
 		Command(int id, Action action, Method method, Optional<String> type, Optional<Integer> target,
 				List<Argument<?>> args) {
 			this._id = id;
@@ -35,7 +35,7 @@ public class Sender {
 			args.forEach(p -> _args.put(p.getName(), p.getValue()));
 		}
 	}
-	
+
 	public static int sendCommand(Action action, Method method, Optional<String> type, Optional<Integer> target,
 			List<Argument<?>> args) {
 		try {

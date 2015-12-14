@@ -39,20 +39,20 @@ public final class Method {
 	public static final Method CLEAR = new Method("clear");
 	public static final Method POPUP = new Method("popup");
 	public static final Method SET_APPLICATION_MENU = new Method("set_application_menu");
-	
+
 	private final String _method;
-	
+
 	public Method(String name) {
 		this._method = name;
 	}
-	
+
 	public String getName() {
 		return _method;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Method [_method=" + _method + "]";
 	}
-	
+
 }

@@ -14,9 +14,8 @@ public final class Result {
 	private final Boolean fullScreen;
 	private final Boolean devToolsOpened;
 	private final Boolean closed;
-	
-	Result(Integer target, Size size, Position position,
-			Boolean maximize, Boolean kiosk, Boolean minimized,
+
+	Result(Integer target, Size size, Position position, Boolean maximize, Boolean kiosk, Boolean minimized,
 			Boolean fullScreen, Boolean devToolsOpened, Boolean closed) {
 		this._target = target;
 		this.size = size;
@@ -28,48 +27,48 @@ public final class Result {
 		this.devToolsOpened = devToolsOpened;
 		this.closed = closed;
 	}
-	
+
 	public Optional<Integer> getTarget() {
 		return ofNullable(_target);
 	}
-	
+
 	public Optional<Size> getSize() {
 		return ofNullable(size);
 	}
-	
+
 	public Optional<Position> getPosition() {
 		return ofNullable(position);
 	}
-	
+
 	public Optional<Boolean> getMaximize() {
 		return ofNullable(maximize);
 	}
-	
+
 	public Optional<Boolean> getKiosk() {
 		return ofNullable(kiosk);
 	}
-	
+
 	public Optional<Boolean> getMinimized() {
 		return ofNullable(minimized);
 	}
-	
+
 	public Optional<Boolean> getFullScreen() {
 		return ofNullable(fullScreen);
 	}
-	
+
 	public Optional<Boolean> getDevToolsOpened() {
 		return ofNullable(devToolsOpened);
 	}
-	
+
 	public Optional<Boolean> getClosed() {
 		return ofNullable(closed);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Result [target=" + _target + ", size=" + size + ", position=" + position + ", maximize=" + maximize
 				+ ", kiosk=" + kiosk + ", minimized=" + minimized + ", fullScreen=" + fullScreen + ", devToolsOpened="
 				+ devToolsOpened + ", closed=" + closed + "]";
 	}
-	
+
 }

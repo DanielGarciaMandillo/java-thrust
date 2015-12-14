@@ -148,7 +148,6 @@ public class Window {
 		return callAndGet(IS_MAXIMIZED);
 	}
 
-
 	public CompletableFuture<Boolean> isMinimized() {
 		return callAndGet(IS_MINIMIZED);
 	}

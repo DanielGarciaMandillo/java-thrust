@@ -14,9 +14,9 @@ public final class Cookie implements RemoteArgument {
 	private final Boolean secure;
 	private final Boolean httpOnly;
 	private final String priority;
-	
-	public Cookie(String source, String name, String value, String domain, String path,
-			Date creation, Date expiry, Date lastAccess, Boolean secure, Boolean httpOnly, String priority) {
+
+	public Cookie(String source, String name, String value, String domain, String path, Date creation, Date expiry,
+			Date lastAccess, Boolean secure, Boolean httpOnly, String priority) {
 		this.source = source;
 		this.name = name;
 		this.value = value;
@@ -29,39 +29,39 @@ public final class Cookie implements RemoteArgument {
 		this.httpOnly = httpOnly;
 		this.priority = priority;
 	}
-	
+
 	public String getSource() {
 		return source;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getValue() {
 		return value;
 	}
-	
+
 	public String getDomain() {
 		return domain;
 	}
-	
+
 	public String getPath() {
 		return path;
 	}
-	
+
 	public Date getCreation() {
 		return creation;
 	}
-	
+
 	public Date getExpiry() {
 		return expiry;
 	}
-	
+
 	public Date getLastAccess() {
 		return lastAccess;
 	}
-	
+
 	public void setLastAccess(Date lastAccess) {
 		this.lastAccess = lastAccess;
 	}
@@ -69,16 +69,15 @@ public final class Cookie implements RemoteArgument {
 	public Boolean getSecure() {
 		return secure;
 	}
-	
+
 	public Boolean getHttpOnly() {
 		return httpOnly;
 	}
-	
+
 	public String getPriority() {
 		return priority;
 	}
-	
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

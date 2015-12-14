@@ -33,18 +33,18 @@ import com.thrust.arguments.Argument;
 import com.thrust.remote.Cookie;
 
 public final class Session {
-	
+
 	private Integer id;
 	private boolean offTheRecord;
 	private boolean cookieStore;
-	
+
 	private Map<String, Set<Cookie>> cookies = new HashMap<>();
-	
+
 	private Session(Integer sessionId, boolean offTheRecord, String path, boolean cookieStore) {
 		this.id = sessionId;
 		this.offTheRecord = offTheRecord;
 		this.cookieStore = cookieStore;
-		
+
 		setCallback(id, COOKIES_LOAD_FOR_KEY, args -> cookiesLoadForKey(args.getKey().get()));
 		setCallback(id, COOKIES_LOAD, args -> cookiesAdd(args.getCookie().get()));
 		setCallback(id, COOKIES_UPDATE_ACCESS_TIME, args -> cookiesUpdateAccessTime(args.getCookie().get()));
@@ -54,18 +54,18 @@ public final class Session {
 	public int visitedLinkAdded(String url) {
 		return sendCommand(CALL, VISITED_LINK_ADD, empty(), of(id), asList(url(url)));
 	}
-	
+
 	public int visitedLinkClear() {
 		return sendCommand(CALL, VISITED_LINK_CLEAR, empty(), of(id), emptyList());
 	}
-	
+
 	public CompletableFuture<Boolean> isOffTheRecord() {
 		int mid = sendCommand(CALL, IS_OFF_THE_RECORD, empty(), of(id), emptyList());
 		CompletableFuture<Boolean> ret = new CompletableFuture<>();
 		MessageBox.addPromise(mid, ret);
 		return ret;
 	}
-	
+
 	private void cookiesDelete(Cookie cookie) {
 		synchronized (cookies) {
 			Set<Cookie> s = cookies.getOrDefault(cookie.getDomain(), new HashSet<>());
@@ -73,7 +73,7 @@ public final class Session {
 			cookies.put(cookie.getDomain(), s);
 		}
 	}
-	
+
 	private void cookiesUpdateAccessTime(Cookie cookie) {
 		synchronized (cookies) {
 			Set<Cookie> s = cookies.getOrDefault(cookie.getDomain(), new HashSet<>());
@@ -82,7 +82,7 @@ public final class Session {
 			cookies.put(cookie.getDomain(), s);
 		}
 	}
-	
+
 	private void cookiesAdd(Cookie cookie) {
 		synchronized (cookies) {
 			Set<Cookie> s = cookies.getOrDefault(cookie.getDomain(), new HashSet<>());
@@ -90,11 +90,11 @@ public final class Session {
 			cookies.put(cookie.getDomain(), s);
 		}
 	}
-	
+
 	private Set<Cookie> cookiesLoadForKey(String domain) {
 		return cookies.get(domain);
 	}
-	
+
 	public static CompletableFuture<Session> create(boolean offTheRecord, String path, boolean cookieStore) {
 		List<Argument<?>> args = asList(offTheRecord(offTheRecord), path(path), cookieStore(cookieStore));
 		int id = Sender.sendCommand(CREATE, EMPTY, of("session"), empty(), args);

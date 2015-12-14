@@ -44,58 +44,58 @@ public final class Menu {
 	private final String label;
 	private final Map<Integer, Item> items = new ConcurrentHashMap<>();
 	private final List<Menu> subMenus = new ArrayList<>();
-	
+
 	Menu(Integer id, Integer cmdId, String label) {
 		this.id = id;
 		this.cmdId = cmdId;
 		this.label = label;
 	}
-	
+
 	public int addItem(Item i) {
 		items.put(i.getCmdId(), i);
 		Events.setCallback(id, EXECUTE, i.getOnExecute());
-		return sendCommand(CALL, ADD_ITEM, of("menu"), of(id),
-				asList(argCommandId(i.getCmdId()), label(i.getLabel())));
+		return sendCommand(CALL, ADD_ITEM, of("menu"), of(id), asList(argCommandId(i.getCmdId()), label(i.getLabel())));
 	}
-	
+
 	public int addCheckItem(Item i) {
 		return addItem(i);
 	}
-	
+
 	public int addRadioItem(RadioItem i) {
 		items.put(i.getCmdId(), i);
 		Events.setCallback(id, EXECUTE, i.getOnExecute());
 		return sendCommand(CALL, ADD_ITEM, of("menu"), of(id),
 				asList(argCommandId(i.getCmdId()), label(i.getLabel()), argGroupId(i.getGroupId())));
 	}
-	
+
 	public int addSeparator() {
 		return sendCommand(CALL, ADD_SEPARATOR, empty(), of(id), emptyList());
 	}
-	
+
 	public int setChecked(CheckItem i, boolean value) {
 		return sendCommand(CALL, SET_CHECKED, empty(), of(id), asList(argCommandId(i.getCmdId()), value(value)));
 	}
-	
+
 	public int setEnabled(Item i, boolean value) {
 		return sendCommand(CALL, SET_ENABLED, empty(), of(id), asList(argCommandId(i.getCmdId()), value(value)));
 	}
-	
+
 	public int setVisible(Item i, boolean value) {
 		return sendCommand(CALL, SET_VISIBLE, empty(), of(id), asList(argCommandId(i.getCmdId()), value(value)));
 	}
-	
+
 	public int setAccelerator(Item i, String accl) {
 		return sendCommand(CALL, SET_VISIBLE, empty(), of(id), asList(argCommandId(i.getCmdId()), accelerator(accl)));
 	}
-	
+
 	public int addSubMenu(Menu m) {
 		synchronized (subMenus) {
 			subMenus.add(m);
 		}
-		return sendCommand(CALL, ADD_SUBMENU, empty(), of(id), asList(Argument.argMenuId(m.id), label(m.label), argCommandId(m.cmdId)));
+		return sendCommand(CALL, ADD_SUBMENU, empty(), of(id),
+				asList(Argument.argMenuId(m.id), label(m.label), argCommandId(m.cmdId)));
 	}
-	
+
 	public int clear() {
 		items.clear();
 		synchronized (subMenus) {
@@ -103,19 +103,19 @@ public final class Menu {
 		}
 		return sendCommand(CALL, CLEAR, empty(), of(id), emptyList());
 	}
-	
+
 	public int popup(Window w) {
 		return sendCommand(CALL, POPUP, empty(), of(id), asList(argWindowId(w.getId())));
 	}
-	
+
 	public int setApplicationMenu() {
 		return sendCommand(CALL, SET_APPLICATION_MENU, empty(), of(id), emptyList());
 	}
-	
+
 	public static int getCommandId() {
 		return nextCmdId.getAndIncrement();
 	}
-	
+
 	public static CompletableFuture<Menu> create(String label) {
 		int cmdId = getCommandId();
 		List<Argument<?>> args = asList(argCommandId(cmdId), label(label));
@@ -133,5 +133,5 @@ public final class Menu {
 		return "Menu [id=" + id + ", cmdId=" + cmdId + ", label=" + label + ", items=" + items + ", subMenus="
 				+ subMenus + "]";
 	}
-	
+
 }
