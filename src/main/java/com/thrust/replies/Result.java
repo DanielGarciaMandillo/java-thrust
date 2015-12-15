@@ -1,4 +1,4 @@
-package com.thrust.utils;
+package com.thrust.replies;
 
 import static java.util.Optional.ofNullable;
 

@@ -1,6 +1,6 @@
 package com.thrust.utils;
 
-import com.thrust.remote.RemoteArgument;
+import com.thrusts.remote.RemoteArgument;
 
 public final class Key implements RemoteArgument {
 	private final String key;

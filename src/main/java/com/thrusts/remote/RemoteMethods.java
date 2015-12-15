@@ -1,11 +1,11 @@
-package com.thrust.remote;
+package com.thrusts.remote;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
-import com.thrust.utils.Args;
+import com.thrust.replies.Args;
 import com.thrust.utils.Tuple;
 
 public class RemoteMethods {

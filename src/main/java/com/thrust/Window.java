@@ -49,8 +49,8 @@ import com.thrust.arguments.Argument;
 import com.thrust.event.Event;
 import com.thrust.event.EventFields;
 import com.thrust.event.Events;
-import com.thrust.utils.Position;
-import com.thrust.utils.Size;
+import com.thrust.replies.Position;
+import com.thrust.replies.Size;
 
 public class Window {
 	private static final Size DEFAULT_SIZE = new Size(1280, 720);

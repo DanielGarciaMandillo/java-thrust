@@ -15,8 +15,9 @@ import com.google.gson.Gson;
 import com.thrust.event.Event;
 import com.thrust.event.EventReply;
 import com.thrust.event.Events;
-import com.thrust.remote.RemoteMethod;
-import com.thrust.utils.Result;
+import com.thrust.replies.Reply;
+import com.thrust.replies.Result;
+import com.thrusts.remote.RemoteMethod;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 

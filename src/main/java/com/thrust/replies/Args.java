@@ -1,10 +1,8 @@
-package com.thrust.utils;
+package com.thrust.replies;
 
 import static java.util.Optional.ofNullable;
 
 import java.util.Optional;
-
-import com.thrust.remote.Cookie;
 
 public final class Args {
 	private final Cookie cookie;

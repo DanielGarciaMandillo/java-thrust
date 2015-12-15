@@ -11,11 +11,11 @@ import static com.thrust.arguments.Argument.cookieStore;
 import static com.thrust.arguments.Argument.offTheRecord;
 import static com.thrust.arguments.Argument.path;
 import static com.thrust.arguments.Argument.url;
-import static com.thrust.remote.RemoteMethod.COOKIES_DELETE;
-import static com.thrust.remote.RemoteMethod.COOKIES_LOAD;
-import static com.thrust.remote.RemoteMethod.COOKIES_LOAD_FOR_KEY;
-import static com.thrust.remote.RemoteMethod.COOKIES_UPDATE_ACCESS_TIME;
-import static com.thrust.remote.RemoteMethods.setCallback;
+import static com.thrusts.remote.RemoteMethod.COOKIES_DELETE;
+import static com.thrusts.remote.RemoteMethod.COOKIES_LOAD;
+import static com.thrusts.remote.RemoteMethod.COOKIES_LOAD_FOR_KEY;
+import static com.thrusts.remote.RemoteMethod.COOKIES_UPDATE_ACCESS_TIME;
+import static com.thrusts.remote.RemoteMethods.setCallback;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import com.thrust.arguments.Argument;
-import com.thrust.remote.Cookie;
+import com.thrust.replies.Cookie;
 
 public final class Session {
 

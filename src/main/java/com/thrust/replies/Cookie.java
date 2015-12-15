@@ -1,6 +1,8 @@
-package com.thrust.remote;
+package com.thrust.replies;
 
 import java.util.Date;
+
+import com.thrusts.remote.RemoteArgument;
 
 public final class Cookie implements RemoteArgument {
 	private final String source;

@@ -1,4 +1,4 @@
-package com.thrust.remote;
+package com.thrusts.remote;
 
 import java.util.Arrays;
 

@@ -1,7 +1,7 @@
 package com.thrust.arguments;
 
-import com.thrust.utils.Position;
-import com.thrust.utils.Size;
+import com.thrust.replies.Position;
+import com.thrust.replies.Size;
 
 public class Argument<T> {
 

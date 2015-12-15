@@ -1,4 +1,4 @@
-package com.thrust.utils;
+package com.thrust.replies;
 
 public class Position {
 	private final int x;

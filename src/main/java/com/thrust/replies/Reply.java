@@ -1,12 +1,10 @@
-package com.thrust;
+package com.thrust.replies;
 
 import static java.util.Optional.ofNullable;
 
 import java.util.Optional;
 
-import com.thrust.remote.RemoteMethod;
-import com.thrust.utils.Args;
-import com.thrust.utils.Result;
+import com.thrusts.remote.RemoteMethod;
 
 public final class Reply {
 	private final String _action;
