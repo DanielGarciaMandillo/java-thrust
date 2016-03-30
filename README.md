@@ -9,6 +9,7 @@ Download latest Thrust binary release [here] and point to the thrustshell binary
 thrust_path="/Applications/ThrustShell.app/Contents/MacOS/ThrustShell"
 ```
 
+
 Run file Main.java in test folder
 
 ```java
